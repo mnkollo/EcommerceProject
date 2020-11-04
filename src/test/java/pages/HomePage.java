@@ -128,9 +128,16 @@ public class HomePage {
     @FindBy(xpath = "//*[@id=\"add_to_cart\"]/button/span")
     public WebElement productPageFadedShortSleeveTshirtsAddToCart;
 
+    @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li/div/div[1]/div/div[2]/span")
+    public WebElement productPageProductPrice;
+
+
+
     //-----------------------------------------------------------
 
-
+public String getProductPageProductPrice(){
+    return productPageProductPrice.getText();
+}
 
     public void productDropdownMenuSizeChart(String size) {
         BrowserUtils.dropdown(productPageFadedShortSleeveTshirtsSizeDropDown, size);

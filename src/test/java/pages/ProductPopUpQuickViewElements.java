@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.BrowserUtils;
 import utilities.Driver;
 
 public class ProductPopUpQuickViewElements {
@@ -20,6 +21,17 @@ public class ProductPopUpQuickViewElements {
 
     }
     //Elements on Product Quick Review Popup page
+
+
+
+    @FindBy(xpath = "/html/body/div/div/div[3]/form/div/div[1]/div[1]/p[1]/span")
+    public WebElement quickViewProductPrice;
+
+    public String getQuickViewProductPrice(){
+        BrowserUtils.waitFor(3);
+        return quickViewProductPrice.getText();
+
+    }
 
     @FindBy(id = "color_7")
     public WebElement productColorBeige;

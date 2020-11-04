@@ -15,11 +15,11 @@ public class ShoppingCartSummaryTest  extends TestBase {
     public void ShoppingCartSummaryTest1() {
         allPages.signInPage().login(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
         allPages.homePage().goToeveningDressesSubsection();
+        String getPriceOnQuickViewPage = allPages.homePage().getProductPageProductPrice();
         allPages.eveningDressesPage().gotoPrintedDressQuickView();
-        //TODO Update Color and Size
-//        allPages.eveningDressesPage().printedDressAddToCartPopup();
-//        allPages.eveningDressesPage().goToCheckOutPage();
-//        allPages.shoppingCartSummaryPage().productDescriptionColor();
+        Assert.assertEquals(getPriceOnQuickViewPage, allPages.productPopUpQuickViewElements().getQuickViewProductPrice());
+
+        //TODO Iframe issue
     }
     @Test
     public void ShoppingCartSummaryTest2() {
