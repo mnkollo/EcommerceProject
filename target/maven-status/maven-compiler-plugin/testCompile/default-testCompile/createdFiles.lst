@@ -1,0 +1,16 @@
+pages\BlousesPage.class
+pages\TshirtPage.class
+pages\CasualDressesPage.class
+pages\HomePage.class
+pages\SignInPage.class
+utilities\Driver.class
+utilities\ConfigurationReader.class
+tests\LoginTest.class
+pages\SummerDressesPage.class
+utilities\BrowserUtils.class
+pages\EveningDressesPage.class
+pages\WomenPage.class
+utilities\BrowserUtils$1.class
+utilities\AllPages.class
+utilities\TestBase.class
+utilities\BrowserUtils$2.class
