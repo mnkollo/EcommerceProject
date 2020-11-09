@@ -34,13 +34,42 @@ public class MyAccountPage {
     @FindBy(xpath = "//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a/span")
     public WebElement accountHolderName;
 
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[3]/div/div[1]/div/div/ul/li[9]/a[1]/span")
+    public WebElement accountPageUpdateButton;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[3]/div/div/form/div[3]/input")
+    public WebElement accountPageCompanytextbox;
+
+    @FindBy(xpath = "//*[@id=\"submitAddress\"]/span")
+    public WebElement accountPageClickSaveButton;
+
+    @FindBy(xpath = "//*[@id=\"center_column\"]/div[1]/div/div/ul/li[3]/span")
+    public WebElement accountPageEmployerName;
+
+
+    public String getEmployerName() {
+        return accountPageEmployerName.getText();
+    }
+
+    public void accountPageClickSaveButton() {
+        BrowserUtils.waitFor(3);
+        accountPageClickSaveButton.click();
+    }
+    public void accountPageClickUpdateButton() {
+        accountPageUpdateButton.click();
+    }
+    public void setAccountPageCompanytextbox(String employer) {
+        BrowserUtils.waitFor(3);
+        accountPageCompanytextbox.clear();
+        accountPageCompanytextbox.sendKeys(employer);
+    }
     public void goToOrderHistoryPage() {
         orderHistoryAndDetailsButton.click();
-}
+    }
     public void goTomyCreditSlipsPage() {
         myCreditSlipsButton.click();
     }
-    public void goToMyAddresses() {
+    public void goToMyAddress() {
         myAddressesButton.click();
     }
     public void goToMyPersonalInformationPage() {

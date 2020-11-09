@@ -23,13 +23,13 @@ public class EveningDressesPage {
     public WebElement printedDressAddToCart;
 
     @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li/div/div[2]/div[2]/a[2]/span")
-    public WebElement printedDressMore;
+    public WebElement printedDressMoreButton;
 
     @FindBy(xpath = "//*[@id=\"color_7\"]")
-    public WebElement printedDressBeigeColorOption;
+    public WebElement productBeigeColorOption;
 
     @FindBy(xpath = "//*[@id=\"color_24\"]")
-    public WebElement printedDressPinkColorOption;
+    public WebElement productPinkColorOption;
 
     @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li/div/div[3]/div[1]/a")
     public WebElement printedDressAddToWishList;
@@ -38,12 +38,10 @@ public class EveningDressesPage {
     public WebElement printedDressAddToCompare;
 
     @FindBy(xpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a/span\n")
-    public WebElement printedDressProceedToCheckOutButton;
+    public WebElement productProceedToCheckOutButton;
 
     @FindBy(xpath = "//*[@id=\"fancybox-frame1604430840325\"]")
     public WebElement quickViewIframe;
-
-    //*[@id="layer_cart"]/div[1]/div[2]/div[4]/a/span
 
     public void gotoProductpagePrintedDress(){
         printedDressImage.click();
@@ -58,10 +56,11 @@ public class EveningDressesPage {
         printedDressAddToCart.click();
     }
     public void goToCheckOutPage(){
-        printedDressProceedToCheckOutButton.click();
+        productProceedToCheckOutButton.click();
     }
 
 }
+//------------------------------------------------------------------------------
 
 
 

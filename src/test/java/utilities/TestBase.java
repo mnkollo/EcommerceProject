@@ -1,14 +1,14 @@
 package utilities;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
+import org.testng.annotations.*;
+
+import java.util.concurrent.TimeUnit;
 
 public abstract class TestBase {
 
     protected WebDriver driver;
+    AllPages allPages = new AllPages();
 
     @Parameters("browser")
     @BeforeMethod
@@ -16,10 +16,17 @@ public abstract class TestBase {
 
         driver = Driver.getDriver(browser);
         driver.get(ConfigurationReader.getProperty("url"));
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        allPages.signInPage().login(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
     }
     @AfterMethod
     public void tearDown(){
 
         Driver.closeDriver();
+    }
+    @BeforeClass
+    public void login(){
+        //allPages.signInPage().login(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
     }
 }

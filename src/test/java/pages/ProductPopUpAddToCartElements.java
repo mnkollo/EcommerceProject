@@ -15,11 +15,7 @@ public class ProductPopUpAddToCartElements {
 
     //Elements on Evening Dresses Products (PopUp AddToCart page)
 
-    @FindBy(xpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a/span")
-    public WebElement eveningDressesAddToCartButton;
 
-    @FindBy(xpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/span/span")
-    public WebElement eveningDressesContinueShoppingButton;
 
 }
 

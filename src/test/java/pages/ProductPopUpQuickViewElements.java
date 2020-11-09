@@ -18,17 +18,19 @@ public class ProductPopUpQuickViewElements {
 
     public void gotoProductPopUpQuickReviewPage(){
         productQuickReviewLink.click();
-
     }
+//----------------------------------------------------------------------------
+    @FindBy(xpath = "/html/body/div[2]/div/div/div/div/iframe")
+    public WebElement quickViewIframe;
+
     //Elements on Product Quick Review Popup page
-
-
 
     @FindBy(xpath = "/html/body/div/div/div[3]/form/div/div[1]/div[1]/p[1]/span")
     public WebElement quickViewProductPrice;
 
     public String getQuickViewProductPrice(){
-        BrowserUtils.waitFor(3);
+        BrowserUtils.waitFor(7);
+        BrowserUtils.iframe(quickViewIframe);
         return quickViewProductPrice.getText();
 
     }

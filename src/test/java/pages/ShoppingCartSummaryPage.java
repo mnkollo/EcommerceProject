@@ -45,18 +45,32 @@ public class ShoppingCartSummaryPage {
     public WebElement productTotalQuantity;
 
     @FindBy(xpath = "/html/body/div/div[2]/div/div[3]/div/div[2]/table/tbody/tr/td[4]/span/span")
-    public WebElement productPageFadedShortSleeveTshirtsUnitPrice;
+    public WebElement productPageUnitPrice;
 
     @FindBy(id = "total_price")
     public WebElement shoppingCartSummaryPageTotalPrice;
 
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[3]/div/p")
+    public WebElement emptyShoppingCartMessage;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[3]/div/div[2]/table/tbody/tr/td[7]/div/a/i")
+    public WebElement trashIconInShoppingCart;
+
     //---------------------------------------------------------------------
 
     public String getSummaryCartPageUnitPrice() {
-       return productPageFadedShortSleeveTshirtsUnitPrice.getText();
+       return productPageUnitPrice.getText();
     }
     public String getshoppingCartSummaryPageTotalPrice() {
         return shoppingCartSummaryPageTotalPrice.getText();
     }
+    public String getEmptyShoppingCartMessage() {
+        BrowserUtils.waitFor(5);
+        return emptyShoppingCartMessage.getText();
+    }
+    public void clickTrashIconToDeleteItem(){
+        trashIconInShoppingCart.click();
+    }
+
 
 }

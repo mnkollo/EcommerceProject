@@ -1,13 +1,15 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.BrowserUtils;
 import utilities.Driver;
 
-import static utilities.BrowserUtils.waitFor;
-import static utilities.BrowserUtils.waitForVisibility;
+import java.util.List;
+
+import static utilities.BrowserUtils.*;
 
 public class HomePage {
     public HomePage() {
@@ -34,6 +36,8 @@ public class HomePage {
         tshirtTab.click();
     }
 
+    //--------------------------------------------------------------------
+
     // Sub-sections under Tabs
     @FindBy(xpath = "//*[@id=\"block_top_menu\"]/ul/li[1]/ul/li[1]/ul/li[1]/a")
     public WebElement tshirtSubsection;
@@ -51,13 +55,25 @@ public class HomePage {
     @FindBy(xpath = "(//a[@title='Summer Dresses'])[2]")
     public WebElement summerDressesSubsection;
 
+    @FindBy(xpath = "//*[@id=\"block_top_menu\"]/ul/li[2]/ul/li[1]/a")
+    public WebElement dressesTabCasualDressessSubLink;
+
+    @FindBy(xpath = "//*[@id=\"block_top_menu\"]/ul/li[2]/ul/li[2]/a")
+    public WebElement dressesTabEveningDressessSubLink;
+
+    @FindBy(xpath = "//*[@id=\"block_top_menu\"]/ul/li[2]/ul/li[3]/a")
+    public WebElement dressesTabSummerDressessSubLink;
+
+
+
     public void goToTshirtsSubsection() {
         BrowserUtils.hover(womenTab);
-        BrowserUtils.waitForClickablility(tshirtSubsection,5);
+        //BrowserUtils.waitForClickablility(tshirtSubsection,5);
         tshirtSubsection.click();
     }
     public void goToBlousesSubsection() {
         BrowserUtils.hover(womenTab);
+        BrowserUtils.waitFor(2);
         blousesSubsection.click();
     }
     public void goTocasualDressesSubsection() {
@@ -74,6 +90,7 @@ public class HomePage {
         summerDressesSubsection.click();
     }
 
+    //--------------------------------------------------------------------------
     // header Tabs
     @FindBy(xpath = "//a[@title='Contact Us']")
     public WebElement contactUsheader;
@@ -88,83 +105,7 @@ public class HomePage {
         signInHeader.click();
     }
 
-    //Popular Tab
-    @FindBy(xpath = "//a[@class='homefeatured']")
-    public WebElement popularTab;
-
-    @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li/div/div[1]/div/a[1]/img")
-    public WebElement fadedShortSleeveTshirtsImage;
-
-    @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li/div/div[1]/div/a[2]/span")
-    public WebElement fadedShortSleeveTshirtsQuickView;
-
-    @FindBy(xpath = "//*[@id=\"add_to_cart\"]/button/span")
-    public WebElement fadedShortSleeveTshirtsAddToCartButton;
-
-    @FindBy(xpath = "//*[@id=\"homefeatured\"]/li[1]/div/div[2]/div[2]/a[2]/span")
-    public WebElement fadedShortSleeveTshirtsMoreButton;
-
-    @FindBy(xpath = "//*[@id=\"homefeatured\"]/li[1]/div/div[1]/div/a[1]")
-    public WebElement fadedShortSleeveTshirtsLink;
-
-    @FindBy(xpath = "//*[@id=\"homefeatured\"]/li[1]/div/div[1]/div/div[2]/span")
-    public WebElement fadedShortSleeveTshirtsPrice;
-
-
-    // Product Page
-    @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li/div/div[1]/div/a[1]/img")
-    public WebElement productPageFadedShortSleeveTshirts;
-
-    @FindBy(id = "our_price_display")
-    public WebElement productPageFadedShortSleeveTshirtsPrice;
-
-    @FindBy(xpath = "//input[@id='quantity_wanted']")
-    public WebElement productPageFadedShortSleeveTshirtsQuantity;
-
-    @FindBy(xpath = "//select[@id='group_1']")
-    public WebElement productPageFadedShortSleeveTshirtsSizeDropDown;
-
-
-    @FindBy(xpath = "//*[@id=\"add_to_cart\"]/button/span")
-    public WebElement productPageFadedShortSleeveTshirtsAddToCart;
-
-    @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li/div/div[1]/div/div[2]/span")
-    public WebElement productPageProductPrice;
-
-
-
-    //-----------------------------------------------------------
-
-public String getProductPageProductPrice(){
-    return productPageProductPrice.getText();
-}
-
-    public void productDropdownMenuSizeChart(String size) {
-        BrowserUtils.dropdown(productPageFadedShortSleeveTshirtsSizeDropDown, size);
-    }
-
-    public void updateQuantityNumber(String num) {
-       productPageFadedShortSleeveTshirtsQuantity.clear();
-       productPageFadedShortSleeveTshirtsQuantity.sendKeys(num);
-    }
-
-    public String getFadedShortSleeveTshirtsPrice() {
-        return productPageFadedShortSleeveTshirtsPrice.getText();
-    }
-    public String getfadedShortSleeveTshirtsLink() {
-        return fadedShortSleeveTshirtsLink.getText();
-    }
-    public void gotoProductPageFadedShortSleeveTshirts() {
-        System.out.println("go to Product Page Faded Short Sleeve Tshirts");
-        fadedShortSleeveTshirtsImage.click();
-    }
-    public void gotofadedShortSleeveTshirtsQuickView() {
-        fadedShortSleeveTshirtsQuickView.click();
-    }
-    public void HomePageAddToCartButton() {
-        fadedShortSleeveTshirtsAddToCartButton.click();
-    }
-
+//-----------------------------------------------------------------------------
     // Product Quick Review Page
     @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li/div/div[1]/div/a[2]/span")
     public WebElement productQuickViewLink;
@@ -185,13 +126,13 @@ public String getProductPageProductPrice(){
     @FindBy(xpath = "//*[@id=\"add_to_cart\"]/button/span")
     public WebElement productQuickViewAddToCart;
 
+    //-----------------------------------------------------------------------------------------
     // ShoppingCart Popup
     @FindBy(css = "#layer_cart > div.clearfix > div.layer_cart_product.col-xs-12.col-md-6 > h2")
     public WebElement productSuccessfullyAddedToYourShoppingCarttext;
 
     @FindBy(xpath = "/html/body/div/div[1]/header/div[3]/div/div/div[4]/div[1]/div[2]/div[4]/a")
     public WebElement proceedToCheckOut;
-
 
     public String getProductSuccessfullyAddedToYourShoppingCarttext() {
         //        waitForVisibility(productSuccessfullyAddedToYourShoppingCarttext, 7);
@@ -227,6 +168,33 @@ public String getProductPageProductPrice(){
 //    public void gotoFadedShortSleeveTshirtsQuickViewAddToCart() {
 //        FadedShortSleeveTshirtsQuickViewAddToCart.click();
 //    }
+//------------------------------------------------------------------------------
+    //Cart Dropdown Elements
+    @FindBy(css = "#header > div:nth-child(3) > div > div > div:nth-child(3) > div > a")
+    public WebElement cartdropdown;
 
+    @FindBy(xpath = "//*[@id=\"header\"]/div[3]/div/div/div[3]/div/div/div/div/dl/dt[1]/span/a")
+    public WebElement itemInShoppingCartdropdown;
+
+    @FindBy(xpath = "//*[@id=\"header_logo\"]/a/img")
+    public WebElement headerLogoButton;
+
+
+
+
+
+    public void removeitemfromdropdownshoppingcart(){
+        BrowserUtils.hover(cartdropdown);
+        itemInShoppingCartdropdown.click();
+    }
+    public List <String> productList(){
+        return  getElementsText(By.xpath("//a[@class='product-name']"));
+    }
+    public List <String> productPrice(){
+        return  getElementsText(By.xpath("//span[@class='price product-price']"));
+    }
+    public void clickOnHeaderLogoButton(){
+        headerLogoButton.click();
+    }
 }
 
