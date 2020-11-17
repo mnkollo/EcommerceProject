@@ -1,6 +1,6 @@
 package utilities;
 
-import pages.*;
+import pages.PrestaShopPages.*;
 
 public class AllPages {
     private BlousesPage blousesPage;
@@ -18,6 +18,7 @@ public class AllPages {
     private ProductPopUpQuickViewElements productPopUpQuickViewElements;
     private ProductPage productPage;
     private ContactUsPage contactUsPage;
+    private InventoryPage inventoryPage;
 
     public BlousesPage blousesPage() {
         if (blousesPage == null) {
@@ -121,5 +122,11 @@ public class AllPages {
             contactUsPage = new ContactUsPage();
         }
         return contactUsPage;
+    }
+    public InventoryPage inventoryPage() {
+        if (inventoryPage == null) {
+            inventoryPage = new InventoryPage();
+        }
+        return inventoryPage;
     }
 }
