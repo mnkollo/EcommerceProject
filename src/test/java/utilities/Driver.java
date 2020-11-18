@@ -1,11 +1,14 @@
 package utilities;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 public class Driver {
+
+    public static By.ByClassName getdriver;
 
     private Driver() {
     }

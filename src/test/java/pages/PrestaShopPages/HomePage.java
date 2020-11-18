@@ -1,5 +1,6 @@
 package pages.PrestaShopPages;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -218,6 +219,10 @@ public List<String> summerDressesList(){
     public void enterTextInSearchTextbox (String product){
         searchTextBox.sendKeys(product);
     }
+   // public void fakerTest(){
+        //Faker faker = new Faker();
+        //searchTextBox.sendKeys(faker.name().firstName());
+    //}
     public void clickSearchButton (){
         //BrowserUtils.waitFor(3);
        // BrowserUtils.hover(searchButton);

@@ -74,6 +74,9 @@ public class BrowserUtils {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeToWaitInSec);
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
+    //public boolean visiblity(WebElement element){
+        //return ExpectedConditions.visibilityOf(element);
+    //}
 
     public static WebElement waitForVisibility(By locator, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
@@ -125,6 +128,7 @@ public class BrowserUtils {
     public static void iframe(WebElement element){
         Driver.getDriver().switchTo().frame(element);
     }
+
 }
 
 

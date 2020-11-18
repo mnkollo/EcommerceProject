@@ -4,15 +4,23 @@ import org.testng.Assert;
 import pages.SeleniumEasyPages.*;
 import org.testng.annotations.Test;
 import utilities.BrowserUtils;
+import utilities.Driver;
 import utilities.SeleniumEasyTestBase;
+
+import java.util.ArrayList;
 
 public class SeleniumEasyBasicsPage extends SeleniumEasyTestBase {
 
-SeleniumEasyHomePage seleniumEasyHomePage = new SeleniumEasyHomePage();
-BasicsPage basicsPage = new BasicsPage();
-BasicFirstFormDemoPage basicFirstFormDemo = new BasicFirstFormDemoPage();
-BasicCheckBoxDemoPage basicCheckBoxDemo = new BasicCheckBoxDemoPage();
-BasicRadioButtonPage basicRadioButtonPage = new BasicRadioButtonPage();
+    SeleniumEasyHomePage seleniumEasyHomePage = new SeleniumEasyHomePage();
+    BasicsPage basicsPage = new BasicsPage();
+    BasicFirstFormDemoPage basicFirstFormDemo = new BasicFirstFormDemoPage();
+    BasicCheckBoxDemoPage basicCheckBoxDemo = new BasicCheckBoxDemoPage();
+    BasicRadioButtonPage basicRadioButtonPage = new BasicRadioButtonPage();
+    BasicSelectDropdownDemoPage basicSelectDropdownDemoPage = new BasicSelectDropdownDemoPage();
+    JavascriptAlertBoxDemoPage javascriptAlertBoxDemoPage = new JavascriptAlertBoxDemoPage();
+    WindowPopupModal windowPopupModal = new WindowPopupModal();
+    BootstrapAlertsPage bootstrapAlerts = new BootstrapAlertsPage();
+    BootstrapModalsPage bootstrapModalsPage = new BootstrapModalsPage();
 
 
     @Test
@@ -28,8 +36,8 @@ BasicRadioButtonPage basicRadioButtonPage = new BasicRadioButtonPage();
         basicFirstFormDemo.clickGetTotalButton();
 
 
-
     }
+
     @Test
     public void CheckBoxDemo() {
         seleniumEasyHomePage.clicknoThanksPopup();
@@ -48,6 +56,7 @@ BasicRadioButtonPage basicRadioButtonPage = new BasicRadioButtonPage();
 
 
     }
+
     @Test
     public void RadioButtonDemo() {
         seleniumEasyHomePage.clicknoThanksPopup();
@@ -60,14 +69,92 @@ BasicRadioButtonPage basicRadioButtonPage = new BasicRadioButtonPage();
         basicRadioButtonPage.clickGetValuesButton();
         //BrowserUtils.waitFor(5);
         String ResultsOfTheTest = basicRadioButtonPage.getAgeGroupAndSexResult();
-        String ExpectedGenderText = basicRadioButtonPage.getGroupFemaleRadioButtonText();
-        String ExpectedAgeGroup = basicRadioButtonPage.getAgeGroupZerotoFiveText();
-        ResultsOfTheTest = ResultsOfTheTest.replaceAll("Sex : ", "");
-        ResultsOfTheTest = ResultsOfTheTest.replaceAll(" Age Group : 0 - 5", "");
-        System.out.println(ResultsOfTheTest);
+        String ExpectedGenderText = basicRadioButtonPage.getGroupFemaleRadioButtonText(); //Female
+        String ExpectedAgeGroup = basicRadioButtonPage.getAgeGroupZerotoFiveText();       //0 - 5
+        Assert.assertTrue(ResultsOfTheTest.contains(ExpectedGenderText));
+        ResultsOfTheTest = ResultsOfTheTest.replace("-", "to");
+        Assert.assertTrue(ResultsOfTheTest.contains(ExpectedAgeGroup));
 
-        //String ageGroup = genderAndAge.replaceAll("Sex : Female Age Group :", "");
-        //ageGroup = ageGroup.replaceAll("-", "to");
-        //System.out.println(ageGroup);
     }
+
+    @Test
+    public void SelectDropdownDemo() {
+        seleniumEasyHomePage.clicknoThanksPopup();
+        seleniumEasyHomePage.clickbasicMenuButton();
+        basicsPage.clickSelectDropdownListDemoListGroupitem();
+        basicSelectDropdownDemoPage.setPleaseSelectDropdowntest();
+        basicSelectDropdownDemoPage.clickMultiSelectDropdown();
+        basicSelectDropdownDemoPage.clickGetAllSelectedButton();
+        Assert.assertTrue(basicSelectDropdownDemoPage.getDaySelected().contains("Sunday"));
+        Assert.assertTrue(basicSelectDropdownDemoPage.getFirstSelectedOption().contains("Ohio"));
+    }
+
+    //TODO Work on figuring out solution for sendkeys
+    @Test
+    public void JavaScriptAlertBoxDemo() {
+        String myName = "Michael Nkollo";
+
+        seleniumEasyHomePage.clicknoThanksPopup();
+        seleniumEasyHomePage.clickbasicMenuButton();
+        basicsPage.clickJavascriptAlertsListGroupitem();
+        BrowserUtils.waitFor(5);
+        javascriptAlertBoxDemoPage.clickJavaScriptAlertBoxClickMeButton();
+        BrowserUtils.waitFor(5);
+        Driver.getDriver().switchTo().alert().accept();
+        javascriptAlertBoxDemoPage.clickJavaScriptConfirmationButton();
+        BrowserUtils.waitFor(3);
+        Driver.getDriver().switchTo().alert().dismiss();
+        javascriptAlertBoxDemoPage.clickForPromptBoxButton();
+        BrowserUtils.waitFor(5);
+        Driver.getDriver().switchTo().alert().sendKeys("");
+        Driver.getDriver().switchTo().alert().sendKeys(myName);
+        Driver.getDriver().switchTo().alert().accept();
+
+    }
+//TODO how to switch over to a popup window
+    @Test
+    public void WindowPopupModalDemo() {
+        seleniumEasyHomePage.clicknoThanksPopup();
+        seleniumEasyHomePage.clickbasicMenuButton();
+        basicsPage.clickWindowPopupModalListGroupitem();
+        windowPopupModal.clickFollowOnTwitter();
+        BrowserUtils.waitFor(2);
+        String tabs = Driver.getDriver().getWindowHandle();
+        Driver.getDriver().switchTo().window(tabs);
+        BrowserUtils.waitFor(2);
+        System.out.println(Driver.getDriver().getTitle());
+        System.out.println(Driver.getDriver().getCurrentUrl());
+        Assert.assertTrue(Driver.getDriver().getTitle().contains("Twitter"));
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains("twitter.com"));
+        BrowserUtils.waitFor(2);
+        windowPopupModal.clickLikeUsOnFacebookButton();
+        BrowserUtils.waitFor(2);
+        windowPopupModal.clickfollowtwitterandFacebookButton();
+        BrowserUtils.waitFor(2);
+        windowPopupModal.clickFollowAllButton();
+    }
+    @Test void BootstrapAlertMessages(){
+        seleniumEasyHomePage.clicknoThanksPopup();
+        seleniumEasyHomePage.clickbasicMenuButton();
+        basicsPage.clickBootstrapAlertsListGroupItem();
+        bootstrapAlerts.clickautocloseableSuccessMessage();
+        BrowserUtils.waitFor(5);
+        bootstrapAlerts.clickNormalSuccessMessage();
+        BrowserUtils.waitFor(5);
+        bootstrapAlerts.clickNormalSuccessMessagePopup();
+
+    }
+    @Test void BootstrapModalsPage(){
+        seleniumEasyHomePage.clicknoThanksPopup();
+        seleniumEasyHomePage.clickbasicMenuButton();
+        basicsPage.clickbootstrapModalsListGroupitem();
+        bootstrapModalsPage.clickSingleModalButton();
+       bootstrapModalsPage.clickSaveChangesPopup();
+        BrowserUtils.waitFor(5);
+        bootstrapModalsPage.clickMultipleModalButton();
+        bootstrapModalsPage.clickSaveChangesPopupTwo();
+        BrowserUtils.waitFor(5);
+
+    }
+
 }

@@ -34,8 +34,12 @@ public class BasicsPage {
     @FindBy(linkText = "Bootstrap Alerts")
     public WebElement bootstrapAlertsListGroupitem;
 
-    @FindBy(className = "Bootstrap Modals")
+    @FindBy(xpath = "//*[@id=\"basic\"]/div/a[8]")
     public WebElement bootstrapModalsListGroupitem;
+
+    public void clickSelectDropdownListDemoListGroupitem(){
+        selectDropdownListDemoListGroupitem.click();
+    }
 
     public void clickSimpleFormDemoListGroupItem (){
         simpleFormDemoListGroupItem.click();
@@ -45,6 +49,18 @@ public class BasicsPage {
     }
     public void clickRadioButtonsDemoListGroupitem(){
         radioButtonsDemoListGroupitem.click();
+    }
+    public void clickJavascriptAlertsListGroupitem(){
+        javascriptAlertsListGroupitem.click();
+    }
+    public void clickWindowPopupModalListGroupitem(){
+        windowPopupModalListGroupitem.click();
+    }
+    public void clickBootstrapAlertsListGroupItem(){
+        bootstrapAlertsListGroupitem.click();
+    }
+    public void clickbootstrapModalsListGroupitem(){
+        bootstrapModalsListGroupitem.click();
     }
 
 

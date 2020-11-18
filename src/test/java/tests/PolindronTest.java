@@ -1,6 +1,8 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import org.testng.annotations.Test;
+import utilities.BrowserUtils;
 
 public class PolindronTest {
 
@@ -28,5 +30,18 @@ int i=word.length(); i>=0; i-- --------> i: 4,3,2,1,0
         } else {
             System.out.println(word + " is not a palindrome");
         }
+    }
+    @Test
+    public void createAccountTest(){
+        Faker faker = new Faker();
+        String firstName = faker.name().firstName();
+        String lastName = faker.name().lastName();
+        String address = faker.address().fullAddress();
+        String email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@gmail.com";
+        System.out.println("firstName: " + firstName);
+        System.out.println("LastName: " + lastName);
+        System.out.println("Address: " + address);
+        System.out.println("Email: " + email);
+
     }
 }
