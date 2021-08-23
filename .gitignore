@@ -1,0 +1,14 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+src/test/java/utilities/OpenSisTestBase.java
+src/test/java/utilities/USVTestBase.java
+target/generated-test-sources/
+target/test-classes/pages/
+target/test-classes/tests/
+target/test-classes/utilities/DemoQATestBase.class
+target/test-classes/utilities/GoogleTestBase.class
+target/test-classes/utilities/MaroPostTestBase.class
+target/test-classes/utilities/OpenSisTestBase.class
+target/test-classes/utilities/PrestaShopTestBase.class
+target/test-classes/utilities/SeleniumEasyTestBase.class
+target/test-classes/utilities/USVTestBase.class
