@@ -22,6 +22,13 @@ public class BootstrapModalsPage {
     @FindBy(css = "#myModal > div > div > div.modal-footer > a.btn.btn-primary")
     public WebElement saveChangesPopupTwo;
 
+    @FindBy(xpath = "//*[@id=\"myModal0\"]/div/div/div[1]/h4")
+    public WebElement modalTitleText;
+
+    public String getModalTitleText() {
+        return modalTitleText.getText();
+    }
+
     public void clickSingleModalButton (){
         singleModalButton.click();
     }

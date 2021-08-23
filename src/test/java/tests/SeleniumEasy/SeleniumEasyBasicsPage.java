@@ -23,6 +23,7 @@ public class SeleniumEasyBasicsPage extends SeleniumEasyTestBase {
     BootstrapModalsPage bootstrapModalsPage = new BootstrapModalsPage();
 
 
+
     @Test
     public void SimpleFormTest() {
         seleniumEasyHomePage.clicknoThanksPopup();
@@ -34,8 +35,6 @@ public class SeleniumEasyBasicsPage extends SeleniumEasyTestBase {
         basicFirstFormDemo.enterValueInTextBox();
         basicFirstFormDemo.enterSecondValueInTextBox();
         basicFirstFormDemo.clickGetTotalButton();
-
-
     }
 
     @Test
@@ -141,19 +140,26 @@ public class SeleniumEasyBasicsPage extends SeleniumEasyTestBase {
         BrowserUtils.waitFor(5);
         bootstrapAlerts.clickNormalSuccessMessage();
         BrowserUtils.waitFor(5);
-        bootstrapAlerts.clickNormalSuccessMessagePopup();
+        bootstrapAlerts.getnormalSuccessMessagePopupText();
+        System.out.println(bootstrapAlerts.getnormalSuccessMessagePopupText());
+        Assert.assertTrue(bootstrapAlerts.getnormalSuccessMessagePopupText().contains("I'm a normal success message. "));
+        //bootstrapAlerts.clickNormalSuccessMessagePopup();
 
     }
     @Test void BootstrapModalsPage(){
+        String ExpectedModalTitleText = "This is the place where the content for the modal dialog displays";
         seleniumEasyHomePage.clicknoThanksPopup();
         seleniumEasyHomePage.clickbasicMenuButton();
         basicsPage.clickbootstrapModalsListGroupitem();
         bootstrapModalsPage.clickSingleModalButton();
-       bootstrapModalsPage.clickSaveChangesPopup();
+        bootstrapModalsPage.clickSaveChangesPopup();
         BrowserUtils.waitFor(5);
+        bootstrapModalsPage.getModalTitleText();
+        System.out.println(bootstrapModalsPage.getModalTitleText());
         bootstrapModalsPage.clickMultipleModalButton();
         bootstrapModalsPage.clickSaveChangesPopupTwo();
         BrowserUtils.waitFor(5);
+        Assert.assertEquals(bootstrapModalsPage.getModalTitleText(),ExpectedModalTitleText);
 
     }
 

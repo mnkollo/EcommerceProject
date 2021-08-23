@@ -19,10 +19,8 @@ public class BootstrapAlertsPage {
     @FindBy(xpath = "/html/body/div[2]/div/div[2]/div/div[2]/div[2]/button")
     public WebElement normalSuccessMessagePopup;
 
-    @FindBy(xpath = "/html/body/div[2]/div/div[2]/div/div[2]/div[2]")
+    @FindBy(xpath = "//div[@class='modal-body'][1]")
     public WebElement normalSuccessMessagePopupText;
-
-
 
 
     @FindBy(xpath = "//*[@id=\"autoclosable-btn-warning\"]")
@@ -30,6 +28,10 @@ public class BootstrapAlertsPage {
 
     @FindBy(xpath = "//*[@id=\"normal-btn-warning\"]")
     public WebElement normalWarningMessage;
+
+    public String getnormalSuccessMessagePopupText () {
+        return normalSuccessMessagePopupText.getText();
+    }
 
     public void clickautocloseableSuccessMessage(){
         autocloseableSuccessMessage.click();

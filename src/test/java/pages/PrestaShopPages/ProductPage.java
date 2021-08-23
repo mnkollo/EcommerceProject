@@ -74,7 +74,7 @@ public class ProductPage {
     }
 
     public void productDropdownMenuSizeChart(String size) {
-        BrowserUtils.dropdown(productPageProductSizeDropDown, size);
+        BrowserUtils.dropdownValue(productPageProductSizeDropDown, size);
     }
 
     public void updateQuantityNumber(String num) {

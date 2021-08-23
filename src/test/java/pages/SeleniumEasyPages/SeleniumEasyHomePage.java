@@ -35,11 +35,11 @@ public class SeleniumEasyHomePage {
         @FindBy(css = "#basic_example > span > i")
         public WebElement basicMenuButton;
 
-        @FindBy(className = "glyphicon glyphicon-chevron-right")
+        @FindBy(xpath = "//*[@id=\"inter_example\"]/span")
         public WebElement intermediateMenuButton;
 
-        @FindBy(className = "round-tabs four")
-        public WebElement advanceMenuButton;
+        @FindBy(xpath = "//*[@id=\"advanced_example\"]/span/i")
+        public WebElement advancedMenuButton;
 
         @FindBy(className = "glyphicon glyphicon-ok")
         public WebElement completeMenuButton;
@@ -47,6 +47,12 @@ public class SeleniumEasyHomePage {
         public void clickbasicMenuButton(){
             basicMenuButton.click();
     }
+        public void clickIntermediateMenuButtion(){
+            intermediateMenuButton.click();
+        }
+        public void clickAdvancedMenuButton(){
+            advancedMenuButton.click();
+        }
 
 }
 

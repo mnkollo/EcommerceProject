@@ -157,7 +157,7 @@ public List<String> summerDressesList(){
         productQuickViewQuantity.sendKeys(count);
     }
     public void productQuickViewSelectSize(String size){
-        BrowserUtils.dropdown(productQuickViewSize, size);
+        BrowserUtils.dropdownValue(productQuickViewSize, size);
     }
 
     //TODO create another page called Product Details Page (assuming if you select any product locators will be the same)

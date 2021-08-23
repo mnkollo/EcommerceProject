@@ -21,7 +21,7 @@ public class BasicSelectDropdownDemoPage {
 
 
     public void setPleaseSelectDropdowntest(){
-        BrowserUtils.dropdown(pleaseSelectDropdown, "Sunday");
+        BrowserUtils.dropdownValue(pleaseSelectDropdown, "Sunday");
     }
     public String getDaySelected() {
         return daySelected.getText();

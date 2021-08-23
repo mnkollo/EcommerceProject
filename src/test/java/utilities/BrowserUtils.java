@@ -120,9 +120,17 @@ public class BrowserUtils {
         });
         return element;
     }
-    public static void dropdown(WebElement element, String value){
+    public static void dropdownValue(WebElement element, String value){
         Select select = new Select (element); //Create object of Select class
         select.selectByValue(value);
+    }
+    public static void dropdownIndex(WebElement element, int index){
+        Select select = new Select (element); //Create object of Select class
+        select.selectByIndex(index);
+    }
+    public static void dropdownVisible(WebElement element, String visible){
+        Select select = new Select (element); //Create object of Select class
+        select.selectByVisibleText(visible);
     }
     //switch from frame to default content
     public static void iframe(WebElement element){
